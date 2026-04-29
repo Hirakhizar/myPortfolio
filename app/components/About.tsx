@@ -7,6 +7,7 @@ import { useRef } from "react";
 import { Code2, Database, GitBranch, Server, TerminalSquare } from "lucide-react";
 import * as THREE from "three";
 import { useTilt } from "@/lib/useTilt";
+import AboutBackground from "./AboutBackground";
 
 const cards = [
   { icon:<Server size={21} />,    title:"Backend Expert",  desc:"Laravel & PHP specialist with 2+ years building production systems.", color:"#d49a57", bg:"rgba(212,154,87,0.14)" },
@@ -184,6 +185,8 @@ export default function About() {
 
   return (
     <section id="about" className="relative py-20 px-4 overflow-hidden sm:py-24 sm:px-6 lg:py-28">
+      <AboutBackground />
+
       {/* Brown code studio theme */}
       <div className="absolute inset-0 pointer-events-none"
         style={{

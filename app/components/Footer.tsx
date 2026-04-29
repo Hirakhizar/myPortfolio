@@ -24,8 +24,8 @@ export default function Footer() {
 
       <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <motion.p className="text-xs"
-          style={{ color:"rgba(215,185,144,0.62)" }}
-          animate={{ opacity:[.45,.75,.45] }} transition={{ duration:5, repeat:Infinity }}>
+          style={{ color:"rgba(215,185,144,0.88)" }}
+          animate={{ opacity:[.78,.95,.78] }} transition={{ duration:5, repeat:Infinity }}>
           (c) {new Date().getFullYear()} Hira Khizar - Built with Next.js &amp; Tailwind CSS
         </motion.p>
 
@@ -39,10 +39,10 @@ export default function Footer() {
               target={href.startsWith("mailto")?undefined:"_blank"}
               rel="noopener noreferrer" aria-label={label}
               whileHover={{ scale:1.25, y:-3 }}
-              style={{ color:"rgba(215,185,144,0.62)" }}
+              style={{ color:"rgba(215,185,144,0.88)" }}
               className="transition-colors duration-200"
               onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = color}
-              onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "rgba(215,185,144,0.62)"}>
+              onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "rgba(215,185,144,0.88)"}>
               {icon}
             </motion.a>
           ))}

@@ -58,7 +58,7 @@ export default function Navbar() {
           borderBottom: scrolled ? "none" : "1px solid rgba(230,189,130,0.1)",
         }}
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-12 sm:h-14 flex items-center justify-between">
 
           {/* Logo */}
           <button onClick={() => go("#home")} className="flex items-center gap-2.5 shrink-0 group">
@@ -86,7 +86,7 @@ export default function Navbar() {
                 <li key={href}>
                   <button
                     onClick={() => go(href)}
-                    className={`relative px-4 py-1.5 rounded-xl text-sm font-medium transition-colors duration-200 ${
+                    className={`relative px-3 py-1 rounded-lg text-xs sm:text-sm font-medium transition-colors duration-200 ${
                       isActive
                         ? "text-[#e6bd82]"
                         : "text-[rgba(239,222,201,0.72)] hover:text-[#fff2df]"
@@ -143,7 +143,7 @@ export default function Navbar() {
                 <li key={href}>
                   <button
                     onClick={() => go(href)}
-                    className="w-full text-left px-4 py-2.5 rounded-xl text-[#d7b990] hover:text-[#fff2df] hover:bg-[rgba(92,56,35,0.32)] transition-all text-sm font-medium"
+                    className="w-full text-left px-4 py-2 rounded-lg text-[#d7b990] hover:text-[#fff2df] hover:bg-[rgba(92,56,35,0.32)] transition-all text-xs sm:text-sm font-medium"
                   >
                     {label}
                   </button>
