@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Mail, MapPin, Send, CheckCircle, AlertCircle } from "lucide-react";
+import { AlertCircle, CheckCircle, Mail, MapPin, MessageSquareText, Send, TerminalSquare } from "lucide-react";
 import GithubIcon from "./icons/GithubIcon";
 import LinkedinIcon from "./icons/LinkedinIcon";
 
@@ -42,146 +42,168 @@ export default function Contact() {
   };
 
   const inputBase =
-    "w-full rounded-xl px-4 py-3 text-sm outline-none transition-all duration-300"
-    + " bg-[rgba(0,10,25,0.6)] border";
+    "w-full rounded-2xl px-4 py-3 text-sm outline-none transition-all duration-300"
+    + " bg-[rgba(31,18,12,0.72)] border";
 
   const CONTACTS = [
-    { icon:<Mail size={17} />,                      label:"Email",    value:"hirakhizarkhizarhayat@gmail.com", href:"mailto:hirakhizarkhizarhayat@gmail.com", color:"#00e5ff" },
-    { icon:<MapPin size={17} />,                    label:"Location", value:"Sargodha, Pakistan",              href:null,                                     color:"#00ffc8" },
-    { icon:<GithubIcon width={17} height={17} />,   label:"GitHub",   value:"github.com/Hirakhizar",           href:"https://github.com/Hirakhizar",          color:"#9b6dff" },
-    { icon:<LinkedinIcon width={17} height={17} />, label:"LinkedIn", value:"hira-khizar-264686294",           href:"https://linkedin.com/in/hira-khizar-264686294", color:"#ff9f7f" },
+    { icon:<Mail size={17} />,                      label:"Email",    value:"hirakhizarkhizarhayat@gmail.com", href:"mailto:hirakhizarkhizarhayat@gmail.com", color:"#d49a57" },
+    { icon:<MapPin size={17} />,                    label:"Location", value:"Sargodha, Pakistan",            href:null,                                     color:"#e6bd82" },
+    { icon:<GithubIcon width={17} height={17} />,   label:"GitHub",   value:"github.com/Hirakhizar",           href:"https://github.com/Hirakhizar",          color:"#c47d45" },
+    { icon:<LinkedinIcon width={17} height={17} />, label:"LinkedIn", value:"hira-khizar-264686294",           href:"https://linkedin.com/in/hira-khizar-264686294", color:"#a96f45" },
   ];
 
   return (
-    <section id="contact" className="relative py-28 px-6 overflow-hidden">
-      {/* Bottom aurora */}
-      <div className="absolute bottom-0 left-0 right-0 h-72 pointer-events-none"
-        style={{ background:"linear-gradient(0deg,rgba(0,229,255,0.07) 0%,transparent 100%)", filter:"blur(24px)" }}
+    <section id="contact" className="relative py-20 px-4 overflow-hidden sm:py-24 sm:px-6 lg:py-28">
+      <div className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(180deg,transparent,rgba(40,22,14,.45)),radial-gradient(circle at 18% 18%,rgba(212,154,87,.18),transparent 25%),radial-gradient(circle at 82% 62%,rgba(92,56,35,.42),transparent 30%)",
+        }}
         aria-hidden="true" />
 
-      {/* Ambient orb */}
-      <motion.div className="absolute top-1/3 right-1/4 pointer-events-none"
-        style={{ width:"400px", height:"400px",
-          background:"radial-gradient(circle,rgba(155,109,255,0.07) 0%,transparent 70%)",
-          filter:"blur(40px)" }}
-        animate={{ scale:[1,1.2,1] }} transition={{ duration:8, repeat:Infinity }}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.035]"
+        style={{ backgroundImage:"linear-gradient(rgba(230,189,130,.9) 1px,transparent 1px),linear-gradient(90deg,rgba(230,189,130,.9) 1px,transparent 1px)", backgroundSize:"48px 48px" }}
         aria-hidden="true" />
 
       <div className="max-w-5xl mx-auto relative z-10" ref={ref}>
         <motion.div initial={{ opacity:0, y:30 }} animate={inView?{opacity:1,y:0}:{}}
-          transition={{ duration:.7 }} className="text-center mb-16">
-          <span className="section-label">Let&apos;s Connect</span>
-          <h2 className="text-4xl sm:text-5xl font-bold mt-1" style={{ color:"#eaf6ff" }}>
-            Get in <span className="grad-text">Touch</span>
+          transition={{ duration:.7 }} className="text-center mb-10 sm:mb-14">
+          <span className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[.24em]"
+            style={{ color:"#e6bd82", background:"rgba(92,56,35,.36)", border:"1px solid rgba(230,189,130,.22)" }}>
+            <MessageSquareText size={12} />
+            Let&apos;s Connect
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-bold mt-3 leading-tight" style={{ color:"#fff2df" }}>
+            Get in <span style={{ color:"#d49a57" }}>Touch</span>
           </h2>
           <motion.div className="ice-divider mt-4 mx-auto" style={{ width:0 }}
             animate={inView?{width:"120px"}:{}} transition={{ duration:.8, delay:.3 }} />
-          <p className="mt-5 max-w-md mx-auto text-sm" style={{ color:"rgba(130,180,220,0.75)" }}>
+          <p className="mt-5 max-w-md mx-auto text-sm leading-relaxed" style={{ color:"rgba(239,222,201,0.72)" }}>
             Open to new opportunities, collaborations, or just a friendly chat about tech.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-10">
+        <div className="grid lg:grid-cols-2 gap-5 sm:gap-7 lg:gap-8 items-stretch">
           {/* Contact info */}
           <motion.div initial={{ opacity:0, x:-50 }} animate={inView?{opacity:1,x:0}:{}}
-            transition={{ duration:.8, delay:.2 }} className="space-y-5">
-            <div className="glass ice-card rounded-2xl p-6 space-y-5">
-              {CONTACTS.map(({ icon, label, value, href, color }, i) => (
-                <motion.div key={label}
-                  initial={{ opacity:0, x:-20 }} animate={inView?{opacity:1,x:0}:{}}
-                  transition={{ delay:.3+i*.1 }}
-                  className="flex items-start gap-4">
-                  <motion.div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                    style={{ background:`${color}14`, border:`1px solid ${color}33`, color }}
-                    whileHover={{ scale:1.15, boxShadow:`0 0 18px ${color}55` }}>
-                    {icon}
-                  </motion.div>
-                  <div>
-                    <p className="text-xs mb-0.5" style={{ color:"rgba(100,155,190,0.7)" }}>{label}</p>
-                    {href ? (
-                      <a href={href} target={href.startsWith("mailto")?undefined:"_blank"}
-                        rel="noopener noreferrer"
-                        className="text-sm break-all transition-colors duration-200"
-                        style={{ color:"rgba(180,215,240,0.9)" }}
-                        onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = color}
-                        onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "rgba(180,215,240,0.9)"}>
-                        {value}
-                      </a>
-                    ) : (
-                      <p className="text-sm" style={{ color:"rgba(180,215,240,0.9)" }}>{value}</p>
-                    )}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+            transition={{ duration:.8, delay:.2 }} className="h-full">
+            <div className="relative h-full min-h-[520px] overflow-hidden rounded-[1.35rem] p-5 sm:p-6 flex flex-col"
+              style={{
+                background:"linear-gradient(145deg,rgba(70,43,27,.92),rgba(24,14,10,.86))",
+                border:"1px solid rgba(230,189,130,.16)",
+                boxShadow:"0 24px 80px rgba(20,9,4,.42), inset 0 1px 0 rgba(255,225,180,.08)",
+              }}>
+              <div className="relative mb-7">
+                <div className="mb-3 inline-flex h-11 w-11 items-center justify-center rounded-2xl"
+                  style={{ color:"#1d1009", background:"linear-gradient(135deg,#e6bd82,#c47d45)", boxShadow:"0 18px 36px rgba(196,125,69,.25)" }}>
+                  <TerminalSquare size={21} />
+                </div>
+                <h3 className="text-xl font-bold" style={{ color:"#fff2df" }}>Start a project conversation</h3>
+                <p className="mt-2 text-sm leading-relaxed" style={{ color:"rgba(239,222,201,.7)" }}>
+                  Send the idea, timeline, or rough problem. I&apos;ll reply with the next practical step.
+                </p>
+              </div>
 
-            {/* Rotating crystal */}
-            <motion.div className="flex justify-center"
-              animate={{ rotate:[0,360] }}
-              transition={{ duration:22, repeat:Infinity, ease:"linear" }}
-              style={{ opacity:.18 }}
-              aria-hidden="true">
-              <svg width="80" height="80" viewBox="0 0 80 80">
-                <path d="M40 5 L40 75 M5 40 L75 40 M15 15 L65 65 M65 15 L15 65 M40 5 L50 20 M40 5 L30 20 M40 75 L50 60 M40 75 L30 60"
-                  stroke="#00e5ff" strokeWidth="1.5" fill="none"/>
-                <circle cx="40" cy="40" r="8" stroke="#9b6dff" strokeWidth="1" fill="none"/>
-              </svg>
-            </motion.div>
+              <div className="relative space-y-3 flex-1">
+                {CONTACTS.map(({ icon, label, value, href, color }, i) => (
+                  <motion.div key={label}
+                    initial={{ opacity:0, x:-20 }} animate={inView?{opacity:1,x:0}:{}}
+                    transition={{ delay:.3+i*.1 }}
+                    className="group flex items-start gap-4 rounded-2xl p-3 transition-all duration-300"
+                    style={{ background:"rgba(255,236,207,.04)", border:"1px solid rgba(230,189,130,.09)" }}>
+                    <motion.div
+                      className="w-10 h-10 rounded-2xl flex items-center justify-center shrink-0"
+                      style={{ background:`${color}14`, border:`1px solid ${color}33`, color }}
+                      whileHover={{ scale:1.12, boxShadow:`0 0 18px ${color}44` }}>
+                      {icon}
+                    </motion.div>
+                    <div>
+                      <p className="text-xs mb-0.5" style={{ color:"rgba(230,189,130,0.68)" }}>{label}</p>
+                      {href ? (
+                        <a href={href} target={href.startsWith("mailto")?undefined:"_blank"}
+                          rel="noopener noreferrer"
+                          className="text-sm break-all transition-colors duration-200"
+                          style={{ color:"rgba(255,242,223,0.9)" }}
+                          onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = color}
+                          onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "rgba(255,242,223,0.9)"}>
+                          {value}
+                        </a>
+                      ) : (
+                        <p className="text-sm" style={{ color:"rgba(255,242,223,0.9)" }}>{value}</p>
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </motion.div>
 
           {/* Form */}
           <motion.div initial={{ opacity:0, x:50 }} animate={inView?{opacity:1,x:0}:{}}
-            transition={{ duration:.8, delay:.3 }}>
-            <form onSubmit={handleSubmit} className="glass ice-card rounded-2xl p-6 space-y-4">
-              {[
-                { id:"name",  label:"Name",  type:"text",  placeholder:"Your name" },
-                { id:"email", label:"Email", type:"email", placeholder:"your@email.com" },
-              ].map(({ id, label, type, placeholder }) => (
-                <div key={id}>
-                  <label htmlFor={id} className="text-xs mb-1.5 block" style={{ color:"rgba(100,155,190,0.8)" }}>
-                    {label}
+            transition={{ duration:.8, delay:.3 }} className="h-full">
+            <form onSubmit={handleSubmit} className="relative h-full min-h-[520px] overflow-hidden rounded-[1.35rem] p-5 sm:p-6 flex flex-col"
+              style={{
+                background:"linear-gradient(145deg,rgba(58,34,22,.92),rgba(17,10,7,.88))",
+                border:"1px solid rgba(230,189,130,.16)",
+                boxShadow:"0 24px 80px rgba(20,9,4,.4), inset 0 1px 0 rgba(255,225,180,.08)",
+              }}>
+              <div className="mb-5 border-b pb-5" style={{ borderColor:"rgba(230,189,130,.1)" }}>
+                <h3 className="text-xl font-bold" style={{ color:"#fff2df" }}>Tell me about your project</h3>
+                <p className="mt-2 text-sm leading-relaxed" style={{ color:"rgba(239,222,201,.68)" }}>
+                  Share a few details and I&apos;ll respond with a practical next step.
+                </p>
+              </div>
+
+              <div className="space-y-4 flex-1">
+                {[
+                  { id:"name",  label:"Name",  type:"text",  placeholder:"Your name" },
+                  { id:"email", label:"Email", type:"email", placeholder:"your@email.com" },
+                ].map(({ id, label, type, placeholder }) => (
+                  <div key={id}>
+                    <label htmlFor={id} className="text-xs mb-1.5 block" style={{ color:"rgba(230,189,130,0.82)" }}>
+                      {label}
+                    </label>
+                    <input id={id} name={id} type={type} required placeholder={placeholder}
+                      value={form[id as keyof typeof form]}
+                      onChange={handleChange}
+                      onFocus={() => setFocused(id)}
+                      onBlur={() => setFocused(null)}
+                      disabled={status === "sending"}
+                      style={{ color:"#fff2df" }}
+                      className={`${inputBase} placeholder:text-[rgba(196,125,69,0.48)] ${
+                        focused === id
+                          ? "border-[rgba(230,189,130,0.55)] shadow-[0_0_20px_rgba(212,154,87,0.16)]"
+                          : "border-[rgba(230,189,130,0.14)]"
+                      } disabled:opacity-50`}
+                    />
+                  </div>
+                ))}
+
+                <div>
+                  <label htmlFor="message" className="text-xs mb-1.5 block" style={{ color:"rgba(230,189,130,0.82)" }}>
+                    Message
                   </label>
-                  <input id={id} name={id} type={type} required placeholder={placeholder}
-                    value={form[id as keyof typeof form]}
+                  <textarea id="message" name="message" required rows={6}
+                    placeholder="What's on your mind?"
+                    value={form.message}
                     onChange={handleChange}
-                    onFocus={() => setFocused(id)}
+                    onFocus={() => setFocused("message")}
                     onBlur={() => setFocused(null)}
                     disabled={status === "sending"}
-                    style={{ color:"#eaf6ff" }}
-                    className={`${inputBase} placeholder:text-[rgba(80,130,170,0.5)] ${
-                      focused === id
-                        ? "border-[rgba(0,229,255,0.6)] shadow-[0_0_18px_rgba(0,229,255,0.15)]"
-                        : "border-[rgba(0,229,255,0.12)]"
+                    style={{ color:"#fff2df" }}
+                    className={`${inputBase} resize-none placeholder:text-[rgba(196,125,69,0.48)] ${
+                      focused === "message"
+                        ? "border-[rgba(230,189,130,0.55)] shadow-[0_0_20px_rgba(212,154,87,0.16)]"
+                        : "border-[rgba(230,189,130,0.14)]"
                     } disabled:opacity-50`}
                   />
                 </div>
-              ))}
-
-              <div>
-                <label htmlFor="message" className="text-xs mb-1.5 block" style={{ color:"rgba(100,155,190,0.8)" }}>
-                  Message
-                </label>
-                <textarea id="message" name="message" required rows={5}
-                  placeholder="What's on your mind?"
-                  value={form.message}
-                  onChange={handleChange}
-                  onFocus={() => setFocused("message")}
-                  onBlur={() => setFocused(null)}
-                  disabled={status === "sending"}
-                  style={{ color:"#eaf6ff" }}
-                  className={`${inputBase} resize-none placeholder:text-[rgba(80,130,170,0.5)] ${
-                    focused === "message"
-                      ? "border-[rgba(0,229,255,0.6)] shadow-[0_0_18px_rgba(0,229,255,0.15)]"
-                      : "border-[rgba(0,229,255,0.12)]"
-                  } disabled:opacity-50`}
-                />
               </div>
 
               {status === "success" && (
                 <motion.div initial={{ opacity:0, y:-8 }} animate={{ opacity:1, y:0 }}
                   className="flex items-center gap-2 text-sm rounded-xl px-4 py-3"
-                  style={{ color:"#4ade80", background:"rgba(74,222,128,0.08)", border:"1px solid rgba(74,222,128,0.2)" }}>
+                  style={{ color:"#e6bd82", background:"rgba(92,56,35,0.35)", border:"1px solid rgba(230,189,130,0.2)" }}>
                   <CheckCircle size={16} />
                   Message sent! I&apos;ll get back to you soon.
                 </motion.div>
@@ -201,17 +223,17 @@ export default function Contact() {
                 whileHover={status === "idle" ? { scale:1.02, y:-1 } : {}}
                 whileTap={status === "idle" ? { scale:.97 } : {}}
                 className="w-full py-3.5 rounded-xl font-bold text-sm flex items-center justify-center gap-2 relative overflow-hidden disabled:opacity-70 disabled:cursor-not-allowed"
-                style={{ background:"linear-gradient(135deg,#00e5ff,#00ffc8)", color:"#020d1a",
-                  boxShadow:"0 0 25px rgba(0,229,255,0.35)" }}>
+                style={{ background:"linear-gradient(135deg,#e6bd82,#c47d45)", color:"#1d1009",
+                  boxShadow:"0 18px 36px rgba(196,125,69,0.28)" }}>
                 {status === "idle" && (
                   <motion.span className="absolute inset-0"
                     animate={{ opacity:[0,.25,0] }} transition={{ duration:2, repeat:Infinity }}
-                    style={{ background:"linear-gradient(135deg,#00ffc8,#00e5ff)" }} />
+                    style={{ background:"linear-gradient(135deg,#fff2df,#d49a57)" }} />
                 )}
                 <span className="relative flex items-center gap-2">
                   {status === "sending" && (
                     <>
-                      <motion.span className="w-4 h-4 border-2 border-[#020d1a] border-t-transparent rounded-full"
+                      <motion.span className="w-4 h-4 border-2 border-[#1d1009] border-t-transparent rounded-full"
                         animate={{ rotate:360 }} transition={{ duration:.8, repeat:Infinity, ease:"linear" }} />
                       Sending...
                     </>

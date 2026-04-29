@@ -15,7 +15,7 @@ export default function Footer() {
         {[10,18,8,14,22,9,16,12,20,7].map((h, i) => (
           <motion.div key={i}
             style={{ width:"1.5px", height:`${h}px`,
-              background:"linear-gradient(180deg,rgba(0,212,255,0.35),transparent)",
+              background:"linear-gradient(180deg,rgba(230,189,130,0.28),transparent)",
               borderRadius:"0 0 2px 2px" }}
             animate={{ opacity:[.25,.75,.25], scaleY:[.85,1.1,.85] }}
             transition={{ duration:2.2+i*.28, repeat:Infinity, delay:i*.18 }} />
@@ -24,25 +24,25 @@ export default function Footer() {
 
       <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <motion.p className="text-xs"
-          style={{ color:"rgba(80,130,170,0.6)" }}
+          style={{ color:"rgba(215,185,144,0.62)" }}
           animate={{ opacity:[.45,.75,.45] }} transition={{ duration:5, repeat:Infinity }}>
-          © {new Date().getFullYear()} Hira Khizar — Built with Next.js &amp; Tailwind CSS
+          (c) {new Date().getFullYear()} Hira Khizar - Built with Next.js &amp; Tailwind CSS
         </motion.p>
 
         <div className="flex items-center gap-4">
           {[
-            { href:"https://github.com/Hirakhizar",                 icon:<GithubIcon width={16} height={16} />,   label:"GitHub",   color:"#00e5ff" },
-            { href:"https://linkedin.com/in/hira-khizar-264686294", icon:<LinkedinIcon width={16} height={16} />, label:"LinkedIn", color:"#9b6dff" },
-            { href:"mailto:hirakhizarkhizarhayat@gmail.com",        icon:<Mail size={16} />,                      label:"Email",    color:"#00ffc8" },
+            { href:"https://github.com/Hirakhizar",                 icon:<GithubIcon width={16} height={16} />,   label:"GitHub",   color:"#e6bd82" },
+            { href:"https://linkedin.com/in/hira-khizar-264686294", icon:<LinkedinIcon width={16} height={16} />, label:"LinkedIn", color:"#d49a57" },
+            { href:"mailto:hirakhizarkhizarhayat@gmail.com",        icon:<Mail size={16} />,                      label:"Email",    color:"#c47d45" },
           ].map(({ href, icon, label, color }) => (
             <motion.a key={label} href={href}
               target={href.startsWith("mailto")?undefined:"_blank"}
               rel="noopener noreferrer" aria-label={label}
               whileHover={{ scale:1.25, y:-3 }}
-              style={{ color:"rgba(80,130,170,0.6)" }}
+              style={{ color:"rgba(215,185,144,0.62)" }}
               className="transition-colors duration-200"
               onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = color}
-              onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "rgba(80,130,170,0.6)"}>
+              onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "rgba(215,185,144,0.62)"}>
               {icon}
             </motion.a>
           ))}

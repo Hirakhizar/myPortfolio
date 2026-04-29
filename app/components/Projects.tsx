@@ -8,12 +8,12 @@ import { PROJECTS } from "@/lib/data";
 
 // Each card gets a distinct accent color
 const ACCENTS = [
-  { color:"#00e5ff", bg:"rgba(0,229,255,0.07)",   glow:"rgba(0,229,255,0.25)"   },
-  { color:"#9b6dff", bg:"rgba(155,109,255,0.07)", glow:"rgba(155,109,255,0.25)" },
-  { color:"#00ffc8", bg:"rgba(0,255,200,0.07)",   glow:"rgba(0,255,200,0.25)"   },
-  { color:"#ff9f7f", bg:"rgba(255,159,127,0.07)", glow:"rgba(255,159,127,0.25)" },
-  { color:"#ff4dff", bg:"rgba(255,77,255,0.07)",  glow:"rgba(255,77,255,0.25)"  },
-  { color:"#ffb347", bg:"rgba(255,179,71,0.07)",  glow:"rgba(255,179,71,0.25)"  },
+  { color:"#e6bd82", bg:"rgba(230,189,130,0.11)", glow:"rgba(230,189,130,0.22)" },
+  { color:"#d49a57", bg:"rgba(212,154,87,0.12)",  glow:"rgba(212,154,87,0.24)"  },
+  { color:"#c47d45", bg:"rgba(196,125,69,0.12)",  glow:"rgba(196,125,69,0.24)"  },
+  { color:"#a96f45", bg:"rgba(169,111,69,0.13)",  glow:"rgba(169,111,69,0.24)"  },
+  { color:"#f0d0a0", bg:"rgba(240,208,160,0.1)",  glow:"rgba(240,208,160,0.2)"  },
+  { color:"#8b5a3c", bg:"rgba(139,90,60,0.18)",   glow:"rgba(139,90,60,0.25)"   },
 ];
 
 function ProjectCard({ project, i, inView }: { project: typeof PROJECTS[0]; i: number; inView: boolean }) {
@@ -30,8 +30,14 @@ function ProjectCard({ project, i, inView }: { project: typeof PROJECTS[0]; i: n
         ref={ref}
         onMouseMove={onMove}
         onMouseLeave={onLeave}
-        className="neon-card ice-card p-6 flex flex-col gap-4 h-full cursor-default relative overflow-hidden group"
-        style={{ transition:"transform .25s cubic-bezier(.4,0,.2,1)", willChange:"transform" }}>
+        className="p-5 sm:p-6 flex flex-col gap-4 h-full cursor-default relative overflow-hidden group rounded-[1.2rem]"
+        style={{
+          transition:"transform .25s cubic-bezier(.4,0,.2,1)",
+          willChange:"transform",
+          background:"linear-gradient(145deg,rgba(70,43,27,.88),rgba(24,14,10,.84))",
+          border:"1px solid rgba(230,189,130,.14)",
+          boxShadow:"0 20px 60px rgba(20,9,4,.34), inset 0 1px 0 rgba(255,225,180,.07)",
+        }}>
 
         {/* Top accent bar */}
         <div className="absolute top-0 left-0 right-0 h-[2px] rounded-t-[1.25rem]"
@@ -51,7 +57,7 @@ function ProjectCard({ project, i, inView }: { project: typeof PROJECTS[0]; i: n
 
         {/* Icon */}
         <motion.div
-          className="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl relative z-10"
+          className="w-12 h-12 rounded-2xl flex items-center justify-center text-xs font-bold tracking-wider relative z-10"
           style={{ background:accent.bg, border:`1px solid ${accent.color}33` }}
           whileHover={{ rotateY:180, scale:1.1 }}
           transition={{ duration:.6 }}>
@@ -61,10 +67,10 @@ function ProjectCard({ project, i, inView }: { project: typeof PROJECTS[0]; i: n
             transition={{ duration:2.5, repeat:Infinity, delay:i*.3 }} />
         </motion.div>
 
-        <h3 className="font-bold text-base leading-snug relative z-10" style={{ color:"#eaf6ff" }}>
+        <h3 className="font-bold text-base leading-snug relative z-10" style={{ color:"#fff2df" }}>
           {project.title}
         </h3>
-        <p className="text-sm leading-relaxed flex-1 relative z-10" style={{ color:"rgba(155,200,230,0.8)" }}>
+        <p className="text-sm leading-relaxed flex-1 relative z-10" style={{ color:"rgba(239,222,201,0.72)" }}>
           {project.description}
         </p>
 
@@ -81,12 +87,12 @@ function ProjectCard({ project, i, inView }: { project: typeof PROJECTS[0]; i: n
 
         {/* Footer */}
         <div className="pt-2 border-t flex items-center justify-between relative z-10"
-          style={{ borderColor:"rgba(0,229,255,0.08)" }}>
+          style={{ borderColor:"rgba(230,189,130,0.12)" }}>
           <a href="https://github.com/Hirakhizar" target="_blank" rel="noopener noreferrer"
             className="flex items-center gap-1.5 text-xs transition-colors duration-200"
-            style={{ color:"rgba(100,160,200,0.6)" }}
+            style={{ color:"rgba(215,185,144,0.66)" }}
             onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = accent.color}
-            onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "rgba(100,160,200,0.6)"}
+            onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "rgba(215,185,144,0.66)"}
             aria-label={`View ${project.title} on GitHub`}>
             <GithubIcon width={13} height={13} />
             <span>View Code</span>
@@ -108,32 +114,35 @@ export default function Projects() {
   const inView = useInView(ref, { once:true, margin:"-80px" });
 
   return (
-    <section id="projects" className="relative py-28 px-6 overflow-hidden">
+    <section id="projects" className="relative py-20 px-4 overflow-hidden sm:py-24 sm:px-6 lg:py-28">
       {/* Ambient glow */}
       <motion.div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
         style={{ width:"800px", height:"600px",
-          background:"radial-gradient(ellipse,rgba(155,109,255,0.05) 0%,rgba(0,229,255,0.04) 50%,transparent 70%)" }}
+          background:"radial-gradient(ellipse,rgba(212,154,87,0.12) 0%,rgba(91,52,31,0.12) 48%,transparent 70%)" }}
         animate={{ scale:[1,1.15,1], rotate:[0,5,0] }} transition={{ duration:10, repeat:Infinity }}
         aria-hidden="true" />
 
       <div className="max-w-6xl mx-auto relative z-10" ref={ref}>
         <motion.div initial={{ opacity:0, y:28 }} animate={inView?{opacity:1,y:0}:{}}
-          transition={{ duration:.7 }} className="text-center mb-16">
-          <span className="section-label">What I&apos;ve Built</span>
-          <h2 className="text-4xl sm:text-5xl font-bold mt-1" style={{ color:"#eaf6ff" }}>
-            Featured <span className="grad-text">Projects</span>
+          transition={{ duration:.7 }} className="text-center mb-10 sm:mb-14">
+          <span className="inline-flex rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[.24em]"
+            style={{ color:"#e6bd82", background:"rgba(92,56,35,.36)", border:"1px solid rgba(230,189,130,.22)" }}>
+            What I&apos;ve Built
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-bold mt-3 leading-tight" style={{ color:"#fff2df" }}>
+            Featured <span style={{ color:"#d49a57" }}>Projects</span>
           </h2>
           <motion.div className="ice-divider mt-4 mx-auto" style={{ width:0 }}
             animate={inView?{width:"120px"}:{}} transition={{ duration:.8, delay:.3 }} />
           <motion.p className="mt-4 text-sm max-w-md mx-auto"
-            style={{ color:"rgba(130,180,220,0.7)" }}
+            style={{ color:"rgba(239,222,201,0.7)" }}
             initial={{ opacity:0 }} animate={inView?{opacity:1}:{}}
             transition={{ delay:.5 }}>
             A selection of systems and applications I&apos;ve designed and shipped.
           </motion.p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
           {PROJECTS.map((project, i) => (
             <ProjectCard key={project.title} project={project} i={i} inView={inView} />
           ))}
@@ -145,12 +154,12 @@ export default function Projects() {
             whileHover={{ scale:1.05, y:-3 }} whileTap={{ scale:.97 }}
             className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm transition-all duration-300"
             style={{
-              background:"rgba(0,10,30,0.5)",
-              border:"1px solid rgba(0,229,255,0.25)",
-              color:"#00e5ff",
+              background:"rgba(31,18,12,0.62)",
+              border:"1px solid rgba(230,189,130,0.25)",
+              color:"#e6bd82",
             }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(0,229,255,0.6)"; (e.currentTarget as HTMLElement).style.boxShadow = "0 0 20px rgba(0,229,255,0.2)"; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(0,229,255,0.25)"; (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}>
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(230,189,130,0.55)"; (e.currentTarget as HTMLElement).style.boxShadow = "0 0 20px rgba(196,125,69,0.18)"; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(230,189,130,0.25)"; (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}>
             <GithubIcon width={15} height={15} />
             More on GitHub
           </motion.a>

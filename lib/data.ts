@@ -11,8 +11,8 @@ export const EXPERIENCE = [
   {
     role: "PHP Developer",
     company: "Digital Aimz",
-    location: "Johar Town Block N, Lahore",
-    period: "Feb 2026 – Present",
+    location: "Lahore,Pakistan",
+    period: "Feb 2026 - Present",
     current: true,
     points: [
       "Developing and maintaining scalable web applications using PHP, Laravel, and CodeIgniter 3.",
@@ -24,8 +24,8 @@ export const EXPERIENCE = [
   {
     role: "Laravel Developer",
     company: "EzyPro",
-    location: "Lahore, Pakistan",
-    period: "June 2025 – Feb 2026",
+    location: "Sargodha, Pakistan",
+    period: "June 2025 - Feb 2026",
     current: false,
     points: [
       "Contributed to construction SaaS platforms for real-time project management.",
@@ -36,8 +36,8 @@ export const EXPERIENCE = [
   {
     role: "PHP Laravel Developer",
     company: "Spark Solutionz",
-    location: "Sargodha, Pakistan",
-    period: "Nov 2023 – June 2025",
+    location: "Lahore, Pakistan",
+    period: "Nov 2023 - June 2025",
     current: false,
     points: [
       "Developed and deployed 5+ systems including e-commerce and school management platforms.",
@@ -57,42 +57,42 @@ export const PROJECTS = [
     description:
       "Full-stack MERN application designed to authenticate and verify Hadith references with advanced filtering and search capabilities, improving reliability of religious content.",
     tech: ["MongoDB", "Express", "React", "Node.js"],
-    icon: "📖",
+    icon: "HA",
   },
   {
     title: "School Management System",
     description:
       "Scalable Laravel-based system for managing students, attendance, grades, and staff operations with improved performance and usability.",
     tech: ["Laravel", "MySQL", "Bootstrap", "PHP"],
-    icon: "🏫",
+    icon: "SM",
   },
   {
     title: "Pharmacy Management System",
     description:
       "Complete pharmacy solution with authentication, inventory tracking, and prescription handling supporting high daily user activity.",
     tech: ["Laravel", "MySQL", "JavaScript", "Bootstrap"],
-    icon: "💊",
+    icon: "PM",
   },
   {
     title: "Permission Management System",
     description:
       "Advanced RBAC system enabling dynamic role and permission control with secure access handling across multiple modules.",
     tech: ["Laravel", "PHP", "MySQL", "REST API"],
-    icon: "🔐",
+    icon: "RB",
   },
   {
     title: "Evento Clone",
     description:
       "Vue.js-based event management platform with dynamic UI, responsive design, and smooth user interaction.",
     tech: ["Vue.js", "JavaScript", "CSS", "Bootstrap"],
-    icon: "🎪",
+    icon: "EV",
   },
   {
     title: "Black Luxora",
     description:
       "Premium car booking platform with dynamic pricing, real-time availability, and seamless booking experience.",
     tech: ["Laravel", "MySQL", "PHP", "REST API"],
-    icon: "🚗",
+    icon: "BL",
   },
 ];
 
