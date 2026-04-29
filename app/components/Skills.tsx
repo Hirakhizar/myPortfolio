@@ -5,17 +5,17 @@ import { useRef } from "react";
 import { SKILLS, SKILL_LEVELS } from "@/lib/data";
 
 const BAR_COLORS = [
-  "linear-gradient(90deg,#0099cc,#00e5ff,#00ffc8)",
-  "linear-gradient(90deg,#6633cc,#9b6dff,#00e5ff)",
-  "linear-gradient(90deg,#00aa88,#00ffc8,#00e5ff)",
-  "linear-gradient(90deg,#cc6633,#ff9f7f,#ffb347)",
+  "linear-gradient(90deg,#8b5a3c,#c47d45,#e6bd82)",
+  "linear-gradient(90deg,#5c3823,#a96f45,#d49a57)",
+  "linear-gradient(90deg,#6f4328,#c47d45,#f0d0a0)",
+  "linear-gradient(90deg,#3a2115,#8b5a3c,#d49a57)",
 ];
 
 const CAT_COLORS: Record<string, { color:string; bg:string }> = {
-  Backend:  { color:"#00e5ff", bg:"rgba(0,229,255,0.07)"   },
-  Frontend: { color:"#9b6dff", bg:"rgba(155,109,255,0.07)" },
-  Database: { color:"#00ffc8", bg:"rgba(0,255,200,0.07)"   },
-  Tools:    { color:"#ff9f7f", bg:"rgba(255,159,127,0.07)" },
+  Backend:  { color:"#e6bd82", bg:"rgba(230,189,130,0.1)" },
+  Frontend: { color:"#d49a57", bg:"rgba(212,154,87,0.11)" },
+  Database: { color:"#c47d45", bg:"rgba(196,125,69,0.12)" },
+  Tools:    { color:"#a96f45", bg:"rgba(169,111,69,0.14)" },
 };
 
 export default function Skills() {
@@ -23,11 +23,11 @@ export default function Skills() {
   const inView = useInView(ref, { once:true, margin:"-80px" });
 
   return (
-    <section id="skills" className="relative py-28 px-6 overflow-hidden">
+    <section id="skills" className="relative py-20 px-4 overflow-hidden sm:py-24 sm:px-6 lg:py-28">
       {/* Top glow */}
       <motion.div className="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none"
         style={{ width:"900px", height:"450px",
-          background:"radial-gradient(ellipse at top,rgba(0,229,255,0.09) 0%,rgba(155,109,255,0.06) 45%,transparent 70%)",
+          background:"radial-gradient(ellipse at top,rgba(212,154,87,0.16) 0%,rgba(92,56,35,0.12) 45%,transparent 70%)",
           filter:"blur(30px)" }}
         animate={{ opacity:[.4,.85,.4] }} transition={{ duration:6, repeat:Infinity }}
         aria-hidden="true" />
@@ -38,7 +38,7 @@ export default function Skills() {
           {[0,50,100].map((o,i) => (
             <motion.path key={i}
               d={`M ${o} 120 Q 350 ${-10+i*10} ${700-o} 120`}
-              stroke={i===1?"rgba(155,109,255,.18)":"rgba(0,229,255,.14)"}
+              stroke={i===1?"rgba(212,154,87,.18)":"rgba(230,189,130,.13)"}
               strokeWidth="1" fill="none"
               animate={{ strokeOpacity:[.05,.28,.05] }}
               transition={{ duration:4+i, repeat:Infinity, delay:i*.7 }} />
@@ -48,40 +48,43 @@ export default function Skills() {
 
       <div className="max-w-5xl mx-auto relative z-10" ref={ref}>
         <motion.div initial={{ opacity:0, y:28 }} animate={inView?{opacity:1,y:0}:{}}
-          transition={{ duration:.7 }} className="text-center mb-16">
-          <span className="section-label">Technical Arsenal</span>
-          <h2 className="text-4xl sm:text-5xl font-bold mt-1" style={{ color:"#eaf6ff" }}>
-            My <span className="grad-text">Skills</span>
+          transition={{ duration:.7 }} className="text-center mb-10 sm:mb-14">
+          <span className="inline-flex rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[.24em]"
+            style={{ color:"#e6bd82", background:"rgba(92,56,35,.36)", border:"1px solid rgba(230,189,130,.22)" }}>
+            Technical Arsenal
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-bold mt-3 leading-tight" style={{ color:"#fff2df" }}>
+            My <span style={{ color:"#d49a57" }}>Skills</span>
           </h2>
           <motion.div className="ice-divider mt-4 mx-auto" style={{ width:0 }}
             animate={inView?{width:"120px"}:{}} transition={{ duration:.8, delay:.3 }} />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-10">
           {/* Skill bars */}
           <motion.div initial={{ opacity:0, x:-36 }} animate={inView?{opacity:1,x:0}:{}}
             transition={{ duration:.7, delay:.2 }} className="space-y-5">
-            <h3 className="text-xs tracking-[.25em] uppercase mb-6" style={{ color:"rgba(0,229,255,0.7)" }}>
+            <h3 className="text-xs tracking-[.25em] uppercase mb-6" style={{ color:"rgba(230,189,130,0.72)" }}>
               Proficiency
             </h3>
             {SKILL_LEVELS.map(({ name, level }, i) => (
               <div key={name}>
                 <div className="flex justify-between mb-2">
-                  <span className="text-sm font-medium" style={{ color:"rgba(180,215,240,0.9)" }}>{name}</span>
+                  <span className="text-sm font-medium" style={{ color:"rgba(255,242,223,0.9)" }}>{name}</span>
                   <motion.span className="text-xs font-mono font-bold"
-                    style={{ color:i%2===0?"#00e5ff":"#9b6dff" }}
+                    style={{ color:i%2===0?"#e6bd82":"#d49a57" }}
                     initial={{ opacity:0 }} animate={inView?{opacity:1}:{}}
                     transition={{ delay:.5+i*.08 }}>
                     {level}%
                   </motion.span>
                 </div>
                 <div className="h-2 rounded-full overflow-hidden"
-                  style={{ background:"rgba(0,229,255,0.07)", border:"1px solid rgba(0,229,255,0.08)" }}>
+                  style={{ background:"rgba(92,56,35,0.34)", border:"1px solid rgba(230,189,130,0.11)" }}>
                   <motion.div className="h-full rounded-full relative overflow-hidden"
                     initial={{ width:0 }}
                     animate={inView?{width:`${level}%`}:{}}
                     transition={{ duration:1.4, delay:.3+i*.09, ease:[.16,1,.3,1] }}
-                    style={{ background:BAR_COLORS[i%4], boxShadow:"0 0 10px rgba(0,229,255,.4)" }}>
+                    style={{ background:BAR_COLORS[i%4], boxShadow:"0 0 14px rgba(196,125,69,.32)" }}>
                     {/* Shimmer */}
                     <motion.span className="absolute inset-0 block"
                       style={{ background:"linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent)", width:"55%" }}
@@ -96,16 +99,21 @@ export default function Skills() {
           {/* Category chips */}
           <motion.div initial={{ opacity:0, x:36 }} animate={inView?{opacity:1,x:0}:{}}
             transition={{ duration:.7, delay:.3 }} className="space-y-4">
-            <h3 className="text-xs tracking-[.25em] uppercase mb-6" style={{ color:"rgba(155,109,255,0.7)" }}>
+            <h3 className="text-xs tracking-[.25em] uppercase mb-6" style={{ color:"rgba(230,189,130,0.72)" }}>
               Categories
             </h3>
             {Object.entries(SKILLS).map(([cat, items], ci) => {
-              const c = CAT_COLORS[cat] ?? { color:"#00e5ff", bg:"rgba(0,229,255,0.07)" };
+              const c = CAT_COLORS[cat] ?? { color:"#e6bd82", bg:"rgba(230,189,130,0.1)" };
               return (
                 <motion.div key={cat}
                   initial={{ opacity:0, y:20 }} animate={inView?{opacity:1,y:0}:{}}
                   transition={{ duration:.5, delay:.4+ci*.12 }}
-                  className="neon-card ice-card p-5 relative overflow-hidden">
+                  className="p-5 relative overflow-hidden rounded-[1.2rem]"
+                  style={{
+                    background:"linear-gradient(145deg,rgba(70,43,27,.86),rgba(24,14,10,.82))",
+                    border:"1px solid rgba(230,189,130,.14)",
+                    boxShadow:"0 18px 50px rgba(20,9,4,.3), inset 0 1px 0 rgba(255,225,180,.07)",
+                  }}>
 
                   {/* Side accent */}
                   <div className="absolute left-0 top-3 bottom-3 w-[3px] rounded-r-full"
@@ -126,12 +134,12 @@ export default function Skills() {
                         whileHover={{ scale:1.1, y:-2 }}
                         className="px-3 py-1.5 rounded-xl text-xs cursor-default transition-all duration-200"
                         style={{
-                          color:"rgba(170,210,240,0.8)",
+                          color:"rgba(239,222,201,0.78)",
                           border:`1px solid ${c.color}22`,
                           background:c.bg,
                         }}
                         onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = c.color; (e.currentTarget as HTMLElement).style.borderColor = `${c.color}66`; }}
-                        onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(170,210,240,0.8)"; (e.currentTarget as HTMLElement).style.borderColor = `${c.color}22`; }}>
+                        onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(239,222,201,0.78)"; (e.currentTarget as HTMLElement).style.borderColor = `${c.color}22`; }}>
                         {skill}
                       </motion.span>
                     ))}

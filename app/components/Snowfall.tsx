@@ -14,8 +14,11 @@ function hexPath(ctx: CanvasRenderingContext2D, x: number, y: number, r: number)
   ctx.beginPath();
   for (let i = 0; i < 6; i++) {
     const a = (i * Math.PI) / 3 - Math.PI / 6;
-    i === 0 ? ctx.moveTo(x + r * Math.cos(a), y + r * Math.sin(a))
-            : ctx.lineTo(x + r * Math.cos(a), y + r * Math.sin(a));
+    if (i === 0) {
+      ctx.moveTo(x + r * Math.cos(a), y + r * Math.sin(a));
+    } else {
+      ctx.lineTo(x + r * Math.cos(a), y + r * Math.sin(a));
+    }
   }
   ctx.closePath();
 }
@@ -24,7 +27,7 @@ function crystalPath(ctx: CanvasRenderingContext2D, x: number, y: number, r: num
   ctx.save();
   ctx.translate(x, y); ctx.rotate(rot);
   ctx.globalAlpha = opacity;
-  ctx.strokeStyle = `rgba(180,230,255,${opacity})`;
+  ctx.strokeStyle = `rgba(230,189,130,${opacity})`;
   ctx.lineWidth = 0.55;
   for (let i = 0; i < 6; i++) {
     ctx.save(); ctx.rotate((i * Math.PI) / 3);
@@ -32,7 +35,8 @@ function crystalPath(ctx: CanvasRenderingContext2D, x: number, y: number, r: num
     ctx.moveTo(0, 0); ctx.lineTo(0, -r);
     ctx.moveTo(0, -r * 0.45); ctx.lineTo(r * 0.28, -r * 0.65);
     ctx.moveTo(0, -r * 0.45); ctx.lineTo(-r * 0.28, -r * 0.65);
-    ctx.stroke(); ctx.restore();
+    ctx.stroke();
+    ctx.restore();
   }
   ctx.restore();
 }
@@ -85,12 +89,12 @@ export default function Snowfall() {
         } else if (f.type === 2) {
           ctx.save(); ctx.translate(f.x, f.y); ctx.rotate(f.rot);
           hexPath(ctx, 0, 0, f.r);
-          ctx.strokeStyle = `rgba(160,220,255,${f.opacity * 0.6})`;
+          ctx.strokeStyle = `rgba(212,154,87,${f.opacity * 0.6})`;
           ctx.lineWidth = 0.6; ctx.stroke(); ctx.restore();
         } else {
           const g = ctx.createRadialGradient(f.x, f.y, 0, f.x, f.y, f.r * 2.2);
-          g.addColorStop(0, `rgba(215,240,255,${f.opacity})`);
-          g.addColorStop(0.5, `rgba(150,210,255,${f.opacity * 0.45})`);
+          g.addColorStop(0, `rgba(230,189,130,${f.opacity})`);
+          g.addColorStop(0.5, `rgba(196,125,69,${f.opacity * 0.45})`);
           g.addColorStop(1, "transparent");
           ctx.beginPath(); ctx.arc(f.x, f.y, f.r * 2.2, 0, Math.PI * 2);
           ctx.fillStyle = g; ctx.fill();

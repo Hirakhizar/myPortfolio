@@ -35,7 +35,7 @@ export default function HeroCrystal() {
       vx: (Math.random() - .5) * .0003, vy: (Math.random() - .5) * .0003, vz: (Math.random() - .5) * .0005,
       size: Math.random() * 3.5 + .8,
       opacity: Math.random() * .55 + .2,
-      hue: [195, 270, 165, 300][Math.floor(Math.random() * 4)],
+      hue: [31, 25, 38, 18][Math.floor(Math.random() * 4)],
       phase: Math.random() * Math.PI * 2,
     }));
 
@@ -76,7 +76,7 @@ export default function HeroCrystal() {
       }
 
       // Particles
-      for (const { sx, sy, ss, p, persp } of proj) {
+      for (const { sx, sy, ss, p } of proj) {
         const pulse = .82 + Math.sin(t * .0009 + p.phase) * .18;
         const a = p.opacity * pulse;
 

@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --bg:        #020810;
-  --bg2:       #050e1c;
-  --cyan:      #00e5ff;
-  --teal:      #00ffc8;
-  --violet:    #9b6dff;
-  --pink:      #ff4dff;
-  --amber:     #ffb347;
-  --white:     #eaf6ff;
-  --muted:     #7ab0cc;
-  --dim:       #3a6a8a;
-  --glass:     rgba(0, 180, 255, 0.07);
-  --border:    rgba(0, 229, 255, 0.2);
+  --bg:        #070504;
+  --bg2:       #120b08;
+  --cyan:      #d49a57;
+  --teal:      #e6bd82;
+  --violet:    #8b5a3c;
+  --pink:      #c47d45;
+  --amber:     #e6bd82;
+  --white:     #fff2df;
+  --muted:     #d7b990;
+  --dim:       #8b5a3c;
+  --glass:     rgba(92, 56, 35, 0.26);
+  --border:    rgba(230, 189, 130, 0.18);
 }
 
 @theme inline {
@@ -49,17 +49,17 @@ body {
 }
 
 /* ── Neon glow helpers ──────────────────── */
-.neon-cyan  { text-shadow: 0 0 12px #00e5ff, 0 0 30px rgba(0,229,255,.5), 0 0 60px rgba(0,229,255,.2); }
-.neon-teal  { text-shadow: 0 0 12px #00ffc8, 0 0 30px rgba(0,255,200,.5); }
-.neon-violet{ text-shadow: 0 0 12px #9b6dff, 0 0 30px rgba(155,109,255,.5); }
+.neon-cyan  { text-shadow: 0 0 12px #e6bd82, 0 0 30px rgba(212,154,87,.42), 0 0 60px rgba(139,90,60,.18); }
+.neon-teal  { text-shadow: 0 0 12px #d49a57, 0 0 30px rgba(196,125,69,.42); }
+.neon-violet{ text-shadow: 0 0 12px #8b5a3c, 0 0 30px rgba(139,90,60,.42); }
 
-.glow-box-cyan   { box-shadow: 0 0 20px rgba(0,229,255,.4), 0 0 50px rgba(0,229,255,.15), inset 0 0 20px rgba(0,229,255,.04); }
-.glow-box-violet { box-shadow: 0 0 20px rgba(155,109,255,.35), 0 0 50px rgba(155,109,255,.12); }
-.glow-box-teal   { box-shadow: 0 0 20px rgba(0,255,200,.35), 0 0 50px rgba(0,255,200,.12); }
+.glow-box-cyan   { box-shadow: 0 0 20px rgba(212,154,87,.34), 0 0 50px rgba(212,154,87,.13), inset 0 0 20px rgba(230,189,130,.04); }
+.glow-box-violet { box-shadow: 0 0 20px rgba(139,90,60,.35), 0 0 50px rgba(139,90,60,.12); }
+.glow-box-teal   { box-shadow: 0 0 20px rgba(230,189,130,.3), 0 0 50px rgba(230,189,130,.1); }
 
 /* ── Gradient text ──────────────────────── */
 .grad-text {
-  background: linear-gradient(135deg, #00e5ff 0%, #00ffc8 45%, #9b6dff 100%);
+  background: linear-gradient(135deg, #e6bd82 0%, #d49a57 48%, #8b5a3c 100%);
   background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -76,7 +76,7 @@ body {
 .ice-card::before {
   content: "";
   position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,.05) 0%, transparent 50%, rgba(0,229,255,.03) 100%);
+  background: linear-gradient(135deg, rgba(255,242,223,.05) 0%, transparent 50%, rgba(212,154,87,.04) 100%);
   pointer-events: none; border-radius: inherit;
 }
 .ice-card::after {
@@ -94,16 +94,16 @@ body {
 .neon-card {
   position: relative;
   border-radius: 1.25rem;
-  background: rgba(0,12,30,.65);
+  background: rgba(31,18,12,.68);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(0,229,255,0.1);
+  border: 1px solid rgba(230,189,130,0.12);
 }
 .neon-card::before {
   content: "";
   position: absolute; inset: -1px;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(0,229,255,.4), rgba(155,109,255,.3), rgba(0,255,200,.2));
+  background: linear-gradient(135deg, rgba(230,189,130,.38), rgba(212,154,87,.3), rgba(139,90,60,.24));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -163,7 +163,7 @@ body {
   font-size: .7rem;
   letter-spacing: .35em;
   text-transform: uppercase;
-  background: linear-gradient(90deg, #00e5ff, #9b6dff);
+  background: linear-gradient(90deg, #e6bd82, #c47d45);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -183,7 +183,7 @@ body {
   left: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, #00e5ff, #9b6dff, #00ffc8);
+  background: linear-gradient(90deg, #e6bd82, #d49a57, #8b5a3c);
   background-size: 200% 100%;
   animation: underline-flow 3s linear infinite;
   border-radius: 2px;
@@ -201,7 +201,7 @@ body {
 
 /* ── Shimmer text ───────────────────────── */
 .shimmer-text {
-  background: linear-gradient(90deg, #eaf6ff 0%, #00e5ff 30%, #9b6dff 60%, #eaf6ff 100%);
+  background: linear-gradient(90deg, #fff2df 0%, #e6bd82 30%, #c47d45 60%, #fff2df 100%);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -225,17 +225,17 @@ body {
 /* ── Divider ────────────────────────────── */
 .ice-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(0,229,255,.3) 30%, rgba(155,109,255,.25) 70%, transparent);
+  background: linear-gradient(90deg, transparent, rgba(230,189,130,.28) 30%, rgba(196,125,69,.24) 70%, transparent);
 }
 
 /* ── Scrollbar ──────────────────────────── */
 ::-webkit-scrollbar       { width: 5px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #00e5ff, #9b6dff, #00ffc8);
+  background: linear-gradient(180deg, #e6bd82, #c47d45, #8b5a3c);
   border-radius: 4px;
 }
-::selection { background: rgba(0,229,255,.3); color:#fff; }
+::selection { background: rgba(196,125,69,.35); color:#fff2df; }
 
 /* ── Cursor glow ────────────────────────── */
 .cursor-glow {
@@ -244,8 +244,8 @@ body {
   width: 500px; height: 500px;
   border-radius: 50%;
   background: radial-gradient(circle,
-    rgba(0,229,255,.07) 0%,
-    rgba(155,109,255,.03) 45%,
+    rgba(212,154,87,.08) 0%,
+    rgba(139,90,60,.04) 45%,
     transparent 70%);
   transform: translate(-50%,-50%);
   z-index: 9999;

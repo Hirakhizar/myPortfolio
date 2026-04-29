@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Hira Khizar — Web Developer & Laravel Specialist",
+  title: "Hira Khizar - Web Developer & Laravel Specialist",
   description:
     "Passionate Web Developer specializing in Laravel backend development, building secure, scalable web applications. Experienced in API development, e-commerce systems, and SaaS platforms.",
   keywords: [
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Hira Khizar" }],
   openGraph: {
-    title: "Hira Khizar — Web Developer & Laravel Specialist",
+    title: "Hira Khizar - Web Developer & Laravel Specialist",
     description:
       "Passionate Web Developer specializing in Laravel backend development.",
     type: "website",
@@ -44,7 +44,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#0a1628] text-[#f0f8ff]">
+      <body className="min-h-full flex flex-col bg-[#070504] text-[#fff2df]">
         {children}
       </body>
     </html>
