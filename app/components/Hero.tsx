@@ -184,7 +184,7 @@ export default function Hero() {
             className="flex items-center justify-center lg:justify-start gap-1.5 text-xs mb-7"
             style={{ color:"rgba(215,185,144,0.7)" }}>
             <MapPin size={11} />
-            <span>Sargodha, Pakistan</span>
+            <span>Lahore, Pakistan</span>
           </motion.div>
 
           <motion.p variants={up}

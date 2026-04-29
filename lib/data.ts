@@ -100,7 +100,7 @@ export const SKILLS = {
   Backend: ["PHP", "Laravel", "CodeIgniter 3", "REST APIs"],
   Frontend: ["JavaScript", "Vue.js", "HTML", "CSS", "Bootstrap"],
   Database: ["MySQL", "MongoDB"],
-  Tools: ["Git", "CI/CD", "Composer", "NPM"],
+  Tools: ["Git", "CI/CD", "Composer", "NPM","Postman", "ngrok"],
 };
 
 export const SKILL_LEVELS = [
