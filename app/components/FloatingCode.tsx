@@ -40,6 +40,7 @@ export default function FloatingCode({ className = "" }: FloatingCodeProps) {
           {el.symbol}
         </motion.div>
       ))}
+      
     </div>
   );
 }
