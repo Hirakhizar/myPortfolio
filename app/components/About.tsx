@@ -235,7 +235,7 @@ export default function About() {
 
               <p className="leading-relaxed text-sm sm:text-[15px]" style={{ color:"rgba(248,242,229,0.9)" }}>
                 I&apos;m a passionate Web Developer based in{" "}
-                <span style={{ color:"#d49a57", fontWeight:600 }}>Sargodha, Pakistan</span>, specialising in
+                <span style={{ color:"#d49a57", fontWeight:600 }}>Lahore, Pakistan</span>, specialising in
                 Laravel for backend development. I build secure, scalable web applications
                 that solve real business problems.
               </p>

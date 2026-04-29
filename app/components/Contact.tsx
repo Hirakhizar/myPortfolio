@@ -47,7 +47,7 @@ export default function Contact() {
 
   const CONTACTS = [
     { icon:<Mail size={17} />,                      label:"Email",    value:"hirakhizarkhizarhayat@gmail.com", href:"mailto:hirakhizarkhizarhayat@gmail.com", color:"#d49a57" },
-    { icon:<MapPin size={17} />,                    label:"Location", value:"Sargodha, Pakistan",            href:null,                                     color:"#e6bd82" },
+    { icon:<MapPin size={17} />,                    label:"Location", value:"Lahore, Pakistan",            href:null,                                     color:"#e6bd82" },
     { icon:<GithubIcon width={17} height={17} />,   label:"GitHub",   value:"github.com/Hirakhizar",           href:"https://github.com/Hirakhizar",          color:"#c47d45" },
     { icon:<LinkedinIcon width={17} height={17} />, label:"LinkedIn", value:"hira-khizar-264686294",           href:"https://linkedin.com/in/hira-khizar-264686294", color:"#a96f45" },
   ];
