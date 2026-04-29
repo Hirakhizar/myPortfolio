@@ -20,6 +20,13 @@ const up: Variants = {
 const FIRST = "Hira".split("");
 const LAST  = "Khizar".split("");
 
+const CODE_SNIPPETS = [
+  { code: "const build = await compile();", color: "#e6bd82", delay: 0 },
+  { code: "await db.migrate();", color: "#d49a57", delay: 1.5 },
+  { code: "return response.json();", color: "#c47d45", delay: 3 },
+  { code: "deploy();", color: "#8b5a3c", delay: 4.5 },
+];
+
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start","end start"] });
@@ -31,6 +38,39 @@ export default function Hero() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 pt-24 pb-16 sm:px-6 lg:pt-20">
 
       <HeroCrystal />
+
+      {/* Floating code snippets */}
+      {CODE_SNIPPETS.map((snippet, i) => (
+        <motion.div key={i} className="absolute pointer-events-none"
+          style={{
+            left: `${20 + i * 18}%`,
+            top: `${15 + i * 12}%`,
+          }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ 
+            opacity: [0, 0.6, 0],
+            y: [20, -60, -120],
+            x: [0, Math.sin(i) * 30, Math.sin(i) * 40],
+          }}
+          transition={{
+            duration: 6 + i * 0.5,
+            delay: snippet.delay,
+            repeat: Infinity,
+            repeatDelay: 3,
+            ease: "easeInOut",
+          }}>
+          <div className="px-3 py-1.5 rounded-lg text-xs font-mono whitespace-nowrap"
+            style={{
+              background: `rgba(0,0,0,0.4)`,
+              border: `1px solid ${snippet.color}88`,
+              color: snippet.color,
+              textShadow: `0 0 8px ${snippet.color}66`,
+              boxShadow: `0 0 12px ${snippet.color}22`,
+            }}>
+            {snippet.code}
+          </div>
+        </motion.div>
+      ))}
 
       {/* Radial vignette */}
       <div className="absolute inset-0 pointer-events-none"
@@ -60,6 +100,19 @@ export default function Hero() {
         style={{ background:"linear-gradient(90deg,transparent,rgba(230,189,130,.34),rgba(196,125,69,.28),transparent)" }}
         animate={{ top:["-2px","102%"] }}
         transition={{ duration:6, repeat:Infinity, ease:"linear", repeatDelay:3 }}
+        aria-hidden="true" />
+
+      {/* Terminal cursor effect */}
+      <motion.div className="absolute pointer-events-none"
+        style={{
+          width: "2px",
+          height: "20px",
+          top: "50%",
+          right: "8%",
+          background: "#e6bd82",
+        }}
+        animate={{ opacity: [1, 0, 1] }}
+        transition={{ duration: 1, repeat: Infinity }}
         aria-hidden="true" />
 
       <motion.div style={{ y: contentY, opacity: contentOp }}
